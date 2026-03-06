@@ -7,73 +7,66 @@ Single-page presentation for hatice — an autonomous issue orchestration system
 - Tailwind CSS via CDN (already configured with custom theme)
 - No build tools, no bundler, no npm
 
-## Frontend Design Skill
+## Design System — Claude Code Aesthetic (STRICT)
 
-You MUST follow these guidelines for all visual work:
+This design system is extracted from claude.ai's actual production design. Follow it exactly.
 
-### Design Thinking
-Before coding, commit to a BOLD aesthetic direction:
-- **Tone**: Luxury/refined editorial aesthetic — warm, organic, intentional
-- **Differentiation**: This should feel like a hand-crafted design studio piece, not generic AI output
-- **One memorable thing**: The seamless blend of warm organic textures with precise technical content
+### Core Principle
+**Warm minimalism with editorial typographic authority.** Nothing flashy. Nothing generic. Every element is intentional, spacious, and refined. Think high-end magazine layout, not SaaS landing page.
 
-### Aesthetics Rules
-- **Typography**: Use the fonts already configured (Instrument Serif for display, DM Sans for body, JetBrains Mono for code). These are distinctive, characterful choices. Pair them with confidence — large serif headings, light sans body.
-- **Color & Theme**: Commit to the warm sand palette. Dominant warm tones with sharp ember/sage accents. No timid, evenly-distributed palettes.
-- **Motion**: CSS-only animations. Focus on high-impact moments: staggered fade-in reveals on page load (animation-delay), subtle hover states. One well-orchestrated entrance > scattered micro-interactions.
-- **Spatial Composition**: Asymmetry welcome. Generous negative space. Grid-breaking hero elements. Overlap where it creates depth.
-- **Backgrounds & Visual Details**: Grain texture overlay on body. Gradient meshes. Layered transparencies (glassmorphism cards). Decorative geometric accents.
-
-### NEVER
-- Use generic AI aesthetics (Inter, Roboto, purple gradients, cookie-cutter layouts)
-- Use dark mode or dark backgrounds
-- Use neon/cyber colors
-- Add npm dependencies or extra files
-- Make it look like every other AI-generated landing page
-
-## Design System — Claude Code Aesthetic
-
-### Colors (already in tailwind.config)
-- **Background:** `bg-sand-50` (warm cream #faf9f6)
-- **Cards:** `bg-white/60 backdrop-blur-sm border border-sand-200`
-- **Text primary:** `text-stone-800`
-- **Text secondary:** `text-stone-400`
-- **Accent warm:** `text-ember-500` (#b5614a)
-- **Accent green:** `text-sage-500` (#5f7d55)
+### Background & Surface
+- Page background: `bg-sand-50` (#FAF9F5 — warm off-white, like quality paper)
+- Cards/containers: NO shadows, NO backdrop-blur, NO glassmorphism. Use flat layout with generous spacing instead of card frames
+- When a container is needed: `bg-sand-100` (#F5F0E8) with hairline border `border border-sand-200/50`
+- NO gradients on content surfaces
+- NO grain texture overlay
 
 ### Typography
-- **Headings:** `font-serif` (Instrument Serif) — elegant, large sizes (text-5xl+)
-- **Body:** `font-sans` (DM Sans) — clean, font-light weight
-- **Code:** `font-mono` (JetBrains Mono)
+- **Display headings:** `font-serif` (Instrument Serif) with `font-light` — the lighter the better, editorial feel
+- **Body text:** `font-sans` (DM Sans) `font-light`
+- **Code:** `font-mono` (JetBrains Mono) `text-sm`
+- **Heading sizes:** Go big. text-6xl to text-8xl for main headings. text-4xl to text-5xl for section headings.
 
-### Layout Principles
-- Generous whitespace — sections use `py-24 px-6` minimum
-- Max content width: `max-w-5xl mx-auto`
-- Cards: `rounded-2xl p-8 shadow-sm`
-- Staggered fade-in animations via CSS `@keyframes`
+### Colors
+- **Text primary:** `text-stone-900` — near-black with warm undertone, NEVER pure black
+- **Text secondary:** `text-stone-400` — medium warm gray
+- **Brand accent:** `text-ember-500` (#B5614A — terracotta/clay) — use sparingly for key highlights
+- **Secondary accent:** `text-sage-500` (#5F7D55) — for success/active states only
+- **Borders:** `border-stone-200/30` — hairline, barely visible
 
-### CSS Techniques to Use
-```css
-/* Grain overlay on body */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,..."); /* noise pattern */
-  pointer-events: none;
-  z-index: 50;
-}
+### Buttons
+- Primary: `bg-stone-900 text-sand-50 rounded-lg px-6 py-2.5` — near-black, warm
+- Secondary: `border border-stone-300/30 rounded-lg px-6 py-2.5` — hairline outline
+- NO gradient buttons, NO colored buttons
 
-/* Staggered fade-in */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-up { animation: fadeUp 0.8s ease-out both; }
-.fade-up-1 { animation-delay: 0.1s; }
-.fade-up-2 { animation-delay: 0.2s; }
-```
+### Layout
+- Ultra-generous whitespace: sections use `py-32 px-6` minimum
+- Content width: `max-w-5xl mx-auto`
+- Full viewport hero: `min-h-screen`
+- Let content breathe — when in doubt, add more space
+
+### Animation
+- CSS-only, subtle
+- `@keyframes fadeUp` for entrance: `opacity 0→1, translateY(20px→0)`, 0.8s ease-out
+- Staggered delays: 0.1s increments
+- NO bouncing, NO spinning, NO pulsing
+- Transitions on hover: `transition-all duration-300`
+
+### Footer
+- **Black background** `bg-stone-950` — high contrast against warm body
+- Text in `text-stone-400`
+- Creates a strong editorial bookend
+
+### NEVER DO
+- Glassmorphism (backdrop-blur, bg-white/60)
+- Grain/noise texture overlays
+- Neon or cyber colors
+- Dark mode body
+- Heavy shadows (shadow-lg, shadow-xl)
+- Generic SaaS hero patterns
+- Gradient backgrounds on sections
+- Emojis as icons
+- Inter, Roboto, or any generic font
 
 ## Architecture Reference
 
