@@ -27,20 +27,216 @@
         },
       }
     </script>
+    <style>
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.8; }
+      }
+      .fade-up { animation: fadeUp 0.8s ease-out both; }
+      .fade-up-delay { animation: fadeUp 0.8s ease-out 0.2s both; }
+      .scroll-line { animation: pulse 3s ease-in-out infinite; }
+      .feature-item {
+        animation: fadeUp 0.8s ease-out forwards;
+        opacity: 0;
+      }
+      .step-item {
+        animation: fadeUp 0.8s ease-out forwards;
+        opacity: 0;
+      }
+    </style>
   </head>
   <body class="bg-sand-50 text-stone-800 font-sans antialiased">
 
     <!-- Hero -->
-    <section class="min-h-screen flex items-center justify-center px-6">
-      <div class="text-center max-w-3xl">
-        <h1 class="font-serif text-8xl text-stone-900 font-light mb-6">hatice</h1>
-        <p class="text-2xl text-stone-400 font-light leading-relaxed">
+    <section class="min-h-screen flex items-center justify-center px-6 relative">
+      <div class="text-center">
+        <h1 class="font-serif text-8xl md:text-9xl font-light text-stone-900 mb-8 fade-up">hatice</h1>
+        <p class="text-xl md:text-2xl text-stone-400 font-light leading-relaxed max-w-xl mx-auto fade-up-delay">
           Autonomous issue orchestration powered by Claude Code Agent SDK
         </p>
       </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <div class="w-px h-16 bg-stone-300/50 mx-auto scroll-line"></div>
+      </div>
     </section>
 
-    <!-- Sections will be added below by hatice agents -->
+    <!-- Features -->
+    <section class="py-32 px-6">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-serif text-5xl font-light text-stone-900 text-center mb-6">Built for autonomous engineering</h2>
+        <p class="text-stone-400 font-light text-center mb-20">Everything you need to let agents handle the work.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+          <!-- Feature 1: Multi-Agent Orchestration -->
+          <div class="feature-item" style="animation-delay: 0s;">
+            <div class="w-6 h-px bg-ember-500/40 mb-4"></div>
+            <h3 class="font-serif text-xl text-stone-900 mb-2">Multi-Agent Orchestration</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">Run concurrent Claude agents on different issues with configurable limits</p>
+          </div>
+
+          <!-- Feature 2: Linear & GitHub -->
+          <div class="feature-item" style="animation-delay: 0.1s;">
+            <div class="w-6 h-px bg-ember-500/40 mb-4"></div>
+            <h3 class="font-serif text-xl text-stone-900 mb-2">Linear & GitHub</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">First-class adapters for Linear GraphQL and GitHub Issues</p>
+          </div>
+
+          <!-- Feature 3: Isolated Workspaces -->
+          <div class="feature-item" style="animation-delay: 0.2s;">
+            <div class="w-6 h-px bg-ember-500/40 mb-4"></div>
+            <h3 class="font-serif text-xl text-stone-900 mb-2">Isolated Workspaces</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">Each agent works in its own cloned repo with lifecycle hooks</p>
+          </div>
+
+          <!-- Feature 4: Supervisor & Retry -->
+          <div class="feature-item" style="animation-delay: 0.3s;">
+            <div class="w-6 h-px bg-ember-500/40 mb-4"></div>
+            <h3 class="font-serif text-xl text-stone-900 mb-2">Supervisor & Retry</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">OTP-inspired crash recovery with exponential backoff</p>
+          </div>
+
+          <!-- Feature 5: Live Dashboard -->
+          <div class="feature-item" style="animation-delay: 0.4s;">
+            <div class="w-6 h-px bg-ember-500/40 mb-4"></div>
+            <h3 class="font-serif text-xl text-stone-900 mb-2">Live Dashboard</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">SSE-powered web UI showing agents, queues, tokens, and events</p>
+          </div>
+
+          <!-- Feature 6: Single-File Config -->
+          <div class="feature-item" style="animation-delay: 0.5s;">
+            <div class="w-6 h-px bg-ember-500/40 mb-4"></div>
+            <h3 class="font-serif text-xl text-stone-900 mb-2">Single-File Config</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">One WORKFLOW.md configures tracker, agent, model, and prompt</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-32 px-6">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-serif text-5xl font-light text-stone-900 text-center mb-20">How it works</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-5xl mx-auto">
+          <!-- Step 1: Watch -->
+          <div class="step-item relative" style="animation-delay: 0s;">
+            <div class="font-serif text-4xl text-ember-500/30 mb-4">1</div>
+            <h3 class="font-serif text-2xl text-stone-900 mb-3">Watch</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">Polls your issue tracker for assigned work</p>
+            <!-- Connector line for desktop -->
+            <div class="hidden md:block absolute top-8 left-full w-12 border-t border-dashed border-stone-200/50"></div>
+          </div>
+
+          <!-- Step 2: Spawn -->
+          <div class="step-item relative" style="animation-delay: 0.15s;">
+            <div class="font-serif text-4xl text-ember-500/30 mb-4">2</div>
+            <h3 class="font-serif text-2xl text-stone-900 mb-3">Spawn</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">Creates an isolated workspace, clones your repo</p>
+            <!-- Connector line for desktop -->
+            <div class="hidden md:block absolute top-8 left-full w-12 border-t border-dashed border-stone-200/50"></div>
+          </div>
+
+          <!-- Step 3: Execute -->
+          <div class="step-item relative" style="animation-delay: 0.3s;">
+            <div class="font-serif text-4xl text-ember-500/30 mb-4">3</div>
+            <h3 class="font-serif text-2xl text-stone-900 mb-3">Execute</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">Claude agent writes tests, implements, commits</p>
+            <!-- Connector line for desktop -->
+            <div class="hidden md:block absolute top-8 left-full w-12 border-t border-dashed border-stone-200/50"></div>
+          </div>
+
+          <!-- Step 4: Ship -->
+          <div class="step-item" style="animation-delay: 0.45s;">
+            <div class="font-serif text-4xl text-ember-500/30 mb-4">4</div>
+            <h3 class="font-serif text-2xl text-stone-900 mb-3">Ship</h3>
+            <p class="font-sans text-stone-400 font-light text-sm leading-relaxed">Posts results to tracker, marks issue done</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configuration Section -->
+    <section class="py-32 px-6">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left Column -->
+        <div>
+          <h2 class="font-serif text-5xl font-light text-stone-900 mb-6">Configure in seconds</h2>
+          <p class="text-stone-400 font-light text-lg mb-8">
+            A single WORKFLOW.md defines everything. No complex setup.
+          </p>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full bg-ember-500/40 mt-2 flex-shrink-0"></div>
+              <p class="text-stone-500 font-light text-sm">Choose your tracker — Linear or GitHub</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full bg-ember-500/40 mt-2 flex-shrink-0"></div>
+              <p class="text-stone-500 font-light text-sm">Set your Claude model and permissions</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full bg-ember-500/40 mt-2 flex-shrink-0"></div>
+              <p class="text-stone-500 font-light text-sm">Define a prompt template with Liquid variables</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column - Code Block -->
+        <div class="relative">
+          <div class="absolute top-4 right-4 text-stone-600 text-xs">WORKFLOW.md</div>
+          <div class="bg-stone-950 rounded-xl p-8 font-mono text-sm leading-relaxed">
+            <div class="text-stone-600">---</div>
+            <div><span class="text-ember-400">tracker:</span></div>
+            <div>  <span class="text-ember-400">kind:</span> <span class="text-stone-400">linear</span></div>
+            <div>  <span class="text-ember-400">apiKey:</span> <span class="text-sage-400">$LINEAR_API_KEY</span></div>
+            <div>  <span class="text-ember-400">projectSlug:</span> <span class="text-stone-400">"TEAM"</span></div>
+            <div>  <span class="text-ember-400">assignee:</span> <span class="text-stone-400">"me"</span></div>
+            <div><span class="text-ember-400">workspace:</span></div>
+            <div>  <span class="text-ember-400">rootDir:</span> <span class="text-sage-400">/tmp/workspaces</span></div>
+            <div><span class="text-ember-400">hooks:</span></div>
+            <div>  <span class="text-ember-400">afterCreate:</span> <span class="text-stone-400">"git clone repo . && npm i"</span></div>
+            <div><span class="text-ember-400">claude:</span></div>
+            <div>  <span class="text-ember-400">permissionMode:</span> <span class="text-stone-400">bypassPermissions</span></div>
+            <div>  <span class="text-ember-400">model:</span> <span class="text-stone-400">claude-sonnet-4-20250514</span></div>
+            <div class="text-stone-600">---</div>
+            <div class="mt-4 text-stone-400">Solve: **<span class="text-amber-300">{{ issue.title }}</span>**</div>
+            <div class="text-amber-300">{{ issue.description }}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="h-px bg-stone-200/50 w-full"></div>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 py-20 px-6">
+      <div class="max-w-5xl mx-auto text-center">
+        <h2 class="font-serif text-4xl font-light text-stone-200 mb-8">Start orchestrating</h2>
+
+        <a href="https://github.com/mksglu/hatice" class="inline-flex items-center gap-2 bg-sand-50 text-stone-900 rounded-lg px-6 py-3 hover:bg-sand-100 transition-all duration-300">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          View on GitHub
+        </a>
+
+        <p class="text-stone-600 text-sm font-mono mt-6">Open source</p>
+
+        <p class="text-stone-700 text-xs mt-12">Built with Claude Code Agent SDK</p>
+      </div>
+    </footer>
 
   </body>
 </html>
